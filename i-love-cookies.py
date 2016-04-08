@@ -1,26 +1,57 @@
 "I love  cookies"
 "cookies  love I"
 
-def reverse_words():
-    '''reverses the words, including extra spaces'''
-    original_sentence = raw_input("What sentence would you like to reverse? ")
-    char_list = [] #makes a list to store the characters of the sentence
-    for x in original_sentence: #makes a list of all the characters in the sentence
-        char_list.append(x) 
-    print char_list #for debugging purposes
-    word_list = [] #creates a list to hold the words
-    for item in char_list: #iterates through characters to create words and count spaces
-        new_word = "" #creates a string to store each word before adding it to a word list
-        space_count = 0
-        if item != " ": #executed if character is found
-            space_count = 0 #resets space count to zero because we've entered a new word
-            new_word += item #creating a word from characters
-            char_list = char_list[1:] #making the char_list smaller
-        word_list.append(new_word) #adds words to a word list
-        if item == " ": #executed if a space is found
-            new_word = ""
-            space_count += 1
-            char_list = char_list[1:]
+word_list = []
+char_list = []
+
+def find_words(lst):
+    '''returns a list of words and spaces in forward order'''
+    if lst == []:
+        return word_list
+    new_word = "".join(lst[0:lst.index(' ')])
+    word_list.append(new_word)
+    for char in lst[lst.index(' '):]:
+        if char == ' ':
+            word_list.append(char)
+        else:
+            find_words(lst[lst.index(char):])
+
+    #find_words(lst[lst.index(' ':])
+
+find_words(['a', 'b', 'c', ' ', ' ', 'd', 'e', 'f'])
+
+# def reverse(l):
+#     '''reverses a list'''
+#     if len(l) == 0: return []
+#     return [l[-1]] + reverse(l[:-1])
 
 
-reverse_words()
+# def reverse_words():
+#     '''reverses the words, including extra spaces'''
+    
+#     original_sentence = raw_input("What sentence would you like to reverse? ")
+
+#     char_list = [] #makes a list to store the characters of the sentence
+    
+#     #makes a list of all the characters in the sentence
+#     for x in original_sentence: 
+#         char_list.append(x) 
+
+
+#     word_list = [] #creates a list to hold the words
+
+
+
+
+    # find_words(char_list) #puts words and spaces in a new list
+    # reverse(word_list) #reverses the word and space list
+
+#reverse_words()
+
+
+
+
+
+
+
+
