@@ -10,7 +10,9 @@ def make_new_word(lst):
     word_list.append(new_word)
 
 def find_words(lst):
-    '''returns a list of words and spaces in forward order'''
+    '''takes a list of chars and returns a list of words and spaces in forward order
+        ex: ['a', 'b', 'c', ' ', ' ', 'd', 'e', 'f']  ==> ['abc', ' ', ' ', ]
+    '''
     new_word_chars = []
     for char in lst:
         #adds chars from char list to a new list in order to later create a word from them
@@ -27,9 +29,7 @@ def find_words(lst):
         make_new_word(new_word_chars)
     return word_list
 
-#find_words(['a', 'b', 'c', ' ', ' ', 'd', 'e', 'f'])
-
-
+#b/c for some reason I can't get .reverse() to work... ?
 def reverse(l):
     '''reverses a list'''
     if len(l) == 0: return []
@@ -50,9 +50,8 @@ def reverse_words():
 
     #puts words and spaces in a new list, with any number of spaces added as separate words
     find_words(char_list)
-    print word_list
 
-    #reverses the word and space list
+    #reverses the words and spaces list and prints the stringified version as a sentence
     print ''.join(reverse(word_list))
 
 reverse_words()
